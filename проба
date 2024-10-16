@@ -1,9 +1,12 @@
-for x in range(1,100):
-    if x<20:
-        print('2')
-    if x<40 and x>20:
-        print('3')
-    if x<60 and x>40:
-        print('4')
-    else:
-        print('5')
+import pygame
+
+pygame.int()
+win=pygame.display.set_mode((500, 500))
+pygame.display.set_caption('Игра:))')
+
+run=True
+while(run):
+    for event in pygame.event.get():
+        if event.type == pygame.QUTI:
+            run = False
+pygame.quit()
