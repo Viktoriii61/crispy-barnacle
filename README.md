@@ -15,3 +15,5 @@ The goal of our project is to develop a 2D game using the random function. We us
 Programming Language: Python 
 
 Graphics image: Picsart, Gemcraft, Adobe Photoshop
+
+This project will be written using PyCharm.
