@@ -1,0 +1,4 @@
+pygame.init()
+screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
+pygame.display.set_caption("Игра для развития данных")
+clock = pygame.time.Clock()
