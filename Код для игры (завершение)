@@ -1,0 +1,9 @@
+# Отрисовка игры
+    screen.fill(WHITE)
+    pygame.draw.rect(screen, BLUE, (player_x, player_y, player_size, player_size))
+    for obstacle in obstacles:
+        obstacle.draw()
+    # Обновление экрана
+    pygame.display.flip()
+    clock.tick(FPS)
+pygame.quit()
