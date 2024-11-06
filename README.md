@@ -6,6 +6,8 @@
 
 Изображение графики: Picsart, Gencraft, Adobe Photoshop
 
+Данный проект будет написан с помощью PyCharm
+
 # Project for the course "Introduction to professional activity".
 
 The goal of our project is to develop a 2D game using the random function. We used the PyGame library to create the game. In the game, the object will pass by obstacles of various kinds on its way. During the passage of the game, you will have the opportunity to play with the bot. For example, giving a number was reserved from the suggested options or opening it in 'rock, paper, scissors'. It is also planned to make conspiracies on the way, which word was spoken in the question. Thus, educational material can also be introduced as questions. For example, a definition from some section of the study. This game allows you not only to have fun, but also to repeat or learn new material.
