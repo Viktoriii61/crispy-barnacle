@@ -6,7 +6,7 @@
 
 Изображение графики: Picsart, Gencraft, Adobe Photoshop
 
-Данный проект будет написан с помощью PyCharm
+Разработка данного проекта будет проходить в среде PyCharm.
 
 # Project for the course "Introduction to professional activity".
 
@@ -16,4 +16,4 @@ Programming Language: Python
 
 Graphics image: Picsart, Gemcraft, Adobe Photoshop
 
-This project will be written using PyCharm.
+The development of this project will take place in the PyCharm environment.
