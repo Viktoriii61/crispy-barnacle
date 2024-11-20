@@ -1,0 +1,12 @@
+# Размеры лабиринта
+
+rows, cols = width // cell_size, height // cell_size
+
+# Генерация лабиринта (простой алгоритм)
+
+grid = [[1] * cols for _ in range(rows)]  # 1 - стена, 0 - путь
+
+grid[0][0] = 0  # Начало
+
+grid[rows - 1][cols - 1] = 0  # Конец
+
