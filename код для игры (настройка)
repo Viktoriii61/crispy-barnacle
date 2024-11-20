@@ -25,3 +25,11 @@ player_x = 100
 player_y = HEIGHT - 100
 player_speed = 5
 player_size = 50
+
+# Основной цикл игры
+running = True
+while running:
+    # Обработка событий
+    for event in pygame.event.get():
+        if event.type == pygame.QUIT:
+            running = False
