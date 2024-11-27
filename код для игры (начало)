@@ -51,3 +51,21 @@ while running:
                 print("Ты выиграл мини-игру!")
             else:
                 print("Ты проиграл мини-игру!")
+# Движение игрока
+    keys = pygame.key.get_pressed()
+    if keys[pygame.K_LEFT]:
+        player_x -= player_speed
+    if keys[pygame.K_RIGHT]:
+        player_x += player_speed
+    if keys[pygame.K_UP]:
+        player_y -= player_speed
+    if keys[pygame.K_DOWN]:
+        player_y += player_speed
+
+    # Проверка столкновений с препятствиями
+    for obstacle in obstacles:
+        if player_x < obstacle.x + obstacle.width and player_x + player_size > obstacle.x and \
+           player_y < obstacle.y + obstacle.height and player_y + player_size > obstacle.y:
+            # Проигрыш
+            print("Ты столкнулся с препятствием!")
+            running = False
