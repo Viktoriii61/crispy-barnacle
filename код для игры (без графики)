@@ -24,4 +24,14 @@ font = pygame.font.Font(None, 72)
 # Фон
 background_color = (50, 50, 50)
 
+def show_message(message, font_size=36, duration=None):
+    text_font = pygame.font.Font(None, font_size)
+    text = text_font.render(message, True, WHITE)
+    text_rect = text.get_rect(center=(WIDTH // 2, HEIGHT // 2))
+    screen.blit(text, text_rect)
+    pygame.display.flip()
+    
+    if duration:
+        pygame.time.wait(duration)
+
 pygame.quit()
