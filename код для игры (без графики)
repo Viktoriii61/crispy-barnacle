@@ -125,6 +125,27 @@ if not player_turn:
         show_message("Ничья!", font_size=48)
     player_turn = True  # Меняем на ход игрока
 
+# Запрос на продолжение или выход в главное меню
+        while True:
+            screen.fill(background_color)
+            replay_prompt1 = font.render("Продолжить играть? (1) Да / (2) В главное меню", True, WHITE)
+            screen.blit(replay_prompt1,
+                        (WIDTH // 2 - replay_prompt1.get_width() // 2, HEIGHT // 2 - replay_prompt1.get_height() // 2))
+            pygame.display.flip()
+
+            for event in pygame.event.get():
+                if event.type == pygame.QUIT:
+                    pygame.quit()
+                    return
+
+                if event.type == pygame.KEYDOWN:
+                    if event.key == pygame.K_1:
+                        board = [' '] * 9  # Сбрасываем игровое поле
+                        player_turn = True  # Игрок начинает первым
+                        break
+                    elif event.key == pygame.K_2:
+                        return  # Возвращаемся в главное меню
+
 running = True
 show_message("Нажмите любую клавишу, чтобы начать игру!")
 
