@@ -131,4 +131,29 @@ show_message("Нажмите любую клавишу, чтобы начать 
 player_score = 0
 bot_score = 0
 
+while running:
+    for event in pygame.event.get():
+        if event.type == pygame.QUIT:
+            running = False
+        if event.type == pygame.KEYDOWN:
+            mode_font = pygame.font.Font(None, 48)
+            screen.fill(background_color)
+            text = mode_font.render("Выберите режим: (1) Крестики-нолики, (2) Препятствия", True, WHITE)
+            text_rect = text.get_rect(center=(WIDTH // 2, HEIGHT // 2))
+            screen.blit(text, text_rect)
+            pygame.display.flip()
+
+            waiting = True
+            while waiting:
+                for event in pygame.event.get():
+                    if event.type == pygame.QUIT:
+                        waiting = False
+                    if event.type == pygame.KEYDOWN:
+                        if event.key == pygame.K_1:
+                            tic_tac_toe(player_score, bot_score)
+                            waiting = False
+                        elif event.key == pygame.K_2:
+                            run_obstacle_game()
+                            waiting = False
+
 pygame.quit()
