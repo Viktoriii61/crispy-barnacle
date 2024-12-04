@@ -33,5 +33,9 @@ def show_message(message, font_size=36, duration=None):
     
     if duration:
         pygame.time.wait(duration)
+# Игровая логика для крестиков-ноликов
+def tic_tac_toe(player_score=0, bot_score=0):
+board = [' '] * 9 # Сеточное поле 3x3
+player_turn = True # Это ход игрока (X)
 
 pygame.quit()
