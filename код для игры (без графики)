@@ -146,6 +146,21 @@ if not player_turn:
                     elif event.key == pygame.K_2:
                         return  # Возвращаемся в главное меню
 
+class PlayerObstacle(pygame.sprite.Sprite):
+    def __init__(self):
+        super().__init__()
+        self.image = pygame.Surface((50, 50))
+        self.image.fill(WHITE)
+        self.rect = self.image.get_rect()
+        self.rect.center = (WIDTH // 4, HEIGHT // 2)
+
+    def update(self):
+        keys = pygame.key.get_pressed()
+        if keys[pygame.K_UP] and self.rect.top > 0:
+            self.rect.y -= 5
+        if keys[pygame.K_DOWN] and self.rect.bottom < HEIGHT:
+            self.rect.y += 5
+
 
 running = True
 show_message("Нажмите любую клавишу, чтобы начать игру!")
