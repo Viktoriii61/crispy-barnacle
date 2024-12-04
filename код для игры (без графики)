@@ -87,6 +87,32 @@ def bot_move():
         index = random.choice(empty_cells)
         board[index] = 'O'
 
+running = True
+while running:
+    draw_board()
+    for event in pygame.event.get():
+        if event.type == pygame.QUIT:
+            pygame.quit()
+            return
+        if event.type == pygame.KEYDOWN and event.key == pygame.K_ESCAPE:
+            return  # Возвращаемся в главное меню, если нажали ESC
+        if event.type == pygame.MOUSEBUTTONDOWN and player_turn:
+            mouseX, mouseY = event.pos
+            column = (mouseX - (WIDTH - 3 * CELL_SIZE) // 2) // CELL_SIZE
+            row = (mouseY - (HEIGHT - 3 * CELL_SIZE) // 2) // CELL_SIZE
+            index = row * 3 + column
+            if board[index] == ' ':
+                board[index] = 'X'
+                if check_winner():
+                    draw_board()
+                    show_message("Вы выиграли!", font_size=48)
+                    player_score += 1  # Увеличиваем счёт игрока
+                elif ' ' not in board:
+                    draw_board()
+                    show_message("Ничья!", font_size=48)
+                player_turn = False  # Меняем на ход бота
+
+
 
 
 
