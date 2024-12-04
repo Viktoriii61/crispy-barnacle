@@ -5,13 +5,13 @@ import random
 pygame.init()
 
 # Настройки окна
-WIDTH, HEIGHT =900, 600
+WIDTH, HEIGHT = 900, 600
 screen = pygame.display.set_mode((WIDTH, HEIGHT))
 pygame.display.set_caption("Игра: Крестики-нолики и преодоление препятствий")
 
 # Цвета
-BLACK = (0, 0, 0)
 WHITE = (255, 255, 255)
+BLACK = (0, 0, 0)
 RED = (255, 0, 0)
 GREEN = (0, 255, 0)
 
@@ -33,31 +33,32 @@ def show_message(message, font_size=36, duration=None):
     
     if duration:
         pygame.time.wait(duration)
+
 # Игровая логика для крестиков-ноликов
 def tic_tac_toe(player_score=0, bot_score=0):
     board = [' '] * 9  # Сеточное поле 3x3
     player_turn = True  # Это ход игрока (X)
+
     while True:
         def draw_board():
             screen.fill(background_color)
             for i in range(3):
                 for j in range(3):
                     # Рисуем сеточную линию
-                    pygame.draw.rect(screen, WHITE, (j * CELL_SIZE + (WIDTH - 3 * CELL_SIZE) // 2,
-                                                     i * CELL_SIZE + (HEIGHT - 3 * CELL_SIZE) // 2,
-                                                     CELL_SIZE, CELL_SIZE), 2)
+                    pygame.draw.rect(screen, WHITE, (j * CELL_SIZE + (WIDTH - 3 * CELL_SIZE) // 2, 
+                                                       i * CELL_SIZE + (HEIGHT - 3 * CELL_SIZE) // 2, 
+                                                       CELL_SIZE, CELL_SIZE), 2)
                     # Отображаем символы (X и O)
                     if board[i * 3 + j] == 'X':
                         text = font.render('X', True, GREEN)
-                        screen.blit(text, (
-                        j * CELL_SIZE + (WIDTH - 3 * CELL_SIZE) // 2 + CELL_SIZE // 2 - text.get_width() // 2,
-                        i * CELL_SIZE + (HEIGHT - 3 * CELL_SIZE) // 2 + CELL_SIZE // 2 - text.get_height() // 2))
+                        screen.blit(text, (j * CELL_SIZE + (WIDTH - 3 * CELL_SIZE) // 2 + CELL_SIZE // 2 - text.get_width() // 2,
+                                           i * CELL_SIZE + (HEIGHT - 3 * CELL_SIZE) // 2 + CELL_SIZE // 2 - text.get_height() // 2))
                     elif board[i * 3 + j] == 'O':
                         text = font.render('O', True, RED)
-                        screen.blit(text, (
-                        j * CELL_SIZE + (WIDTH - 3 * CELL_SIZE) // 2 + CELL_SIZE // 2 - text.get_width() // 2,
-                        i * CELL_SIZE + (HEIGHT - 3 * CELL_SIZE) // 2 + CELL_SIZE // 2 - text.get_height() // 2))
-             # Отображение текущего счёта
+                        screen.blit(text, (j * CELL_SIZE + (WIDTH - 3 * CELL_SIZE) // 2 + CELL_SIZE // 2 - text.get_width() // 2,
+                                           i * CELL_SIZE + (HEIGHT - 3 * CELL_SIZE) // 2 + CELL_SIZE // 2 - text.get_height() // 2))
+            
+            # Отображение текущего счёта
             score_text = font.render(f"Счёт - Вы: {player_score} | Бот: {bot_score}", True, WHITE)
             screen.blit(score_text, (10, 10))
 
@@ -66,85 +67,91 @@ def tic_tac_toe(player_score=0, bot_score=0):
             screen.blit(menu_text, (WIDTH // 2 - menu_text.get_width() // 2, HEIGHT - 50))
 
             pygame.display.flip()
-def check_winner():
-    for i in range(3):
-        # Проверка строк
-        if board[i * 3] == board[i * 3 + 1] == board[i * 3 + 2] != ' ':
-            return True
-        # Проверка столбцов
-        if board[i] == board[i + 3] == board[i + 6] != ' ':
-            return True
-    # Проверка диагоналей
-    if board[0] == board[4] == board[8] != ' ':
-        return True
-    if board[2] == board[4] == board[6] != ' ':
-        return True
-    return False
 
-def bot_move():
-    empty_cells = [i for i in range(9) if board[i] == ' ']
-    if empty_cells:
-        index = random.choice(empty_cells)
-        board[index] = 'O'
+        def check_winner():
+            for i in range(3):
+                # Проверка строк
+                if board[i * 3] == board[i * 3 + 1] == board[i * 3 + 2] != ' ':
+                    return True
+                # Проверка столбцов
+                if board[i] == board[i + 3] == board[i + 6] != ' ':
+                    return True
+            # Проверка диагоналей
+            if board[0] == board[4] == board[8] != ' ':
+                return True
+            if board[2] == board[4] == board[6] != ' ':
+                return True
+            return False
 
-running = True
-while running:
-    draw_board()
-    for event in pygame.event.get():
-        if event.type == pygame.QUIT:
-            pygame.quit()
-            return
-        if event.type == pygame.KEYDOWN and event.key == pygame.K_ESCAPE:
-            return  # Возвращаемся в главное меню, если нажали ESC
-        if event.type == pygame.MOUSEBUTTONDOWN and player_turn:
-            mouseX, mouseY = event.pos
-            column = (mouseX - (WIDTH - 3 * CELL_SIZE) // 2) // CELL_SIZE
-            row = (mouseY - (HEIGHT - 3 * CELL_SIZE) // 2) // CELL_SIZE
-            index = row * 3 + column
-            if board[index] == ' ':
-                board[index] = 'X'
+        def bot_move():
+            empty_cells = [i for i in range(9) if board[i] == ' ']
+            if empty_cells:
+                index = random.choice(empty_cells)
+                board[index] = 'O'
+
+        running = True
+        while running:
+            draw_board()
+            for event in pygame.event.get():
+                if event.type == pygame.QUIT:
+                    pygame.quit()
+                    return
+                if event.type == pygame.KEYDOWN and event.key == pygame.K_ESCAPE:
+                    return  # Возвращаемся в главное меню, если нажали ESC
+
+                if event.type == pygame.MOUSEBUTTONDOWN and player_turn:
+                    mouseX, mouseY = event.pos
+                    column = (mouseX - (WIDTH - 3 * CELL_SIZE) // 2) // CELL_SIZE
+                    row = (mouseY - (HEIGHT - 3 * CELL_SIZE) // 2) // CELL_SIZE
+                    index = row * 3 + column
+                    if board[index] == ' ':
+                        board[index] = 'X'
+                        if check_winner():
+                            draw_board()
+                            show_message("Вы выиграли!", font_size=48)
+                            player_score += 1  # Увеличиваем счёт игрока
+                            board = [' '] * 9  # Сбрасываем игру
+                        elif ' ' not in board:
+                            draw_board()
+                            show_message("Ничья!", font_size=48)
+                            board = [' '] * 9  # Сбрасываем игру
+                        player_turn = False  # Меняем на ход бота
+
+            if not player_turn:
+                # Задержка перед ходом бота
+                pygame.time.wait(1000)  # 1000 миллисекунд = 1 секунда
+                bot_move()
                 if check_winner():
                     draw_board()
-                    show_message("Вы выиграли!", font_size=48)
-                    player_score += 1  # Увеличиваем счёт игрока
+                    show_message("Бот выиграл!", font_size=48)
+                    bot_score += 1  # Увеличиваем счёт бота
+                    board = [' '] * 9  # Сбрасываем игру
                 elif ' ' not in board:
                     draw_board()
                     show_message("Ничья!", font_size=48)
-                player_turn = False  # Меняем на ход бота
+                    board = [' '] * 9  # Сбрасываем игру
+                player_turn = True  # Меняем на ход игрока
 
-if not player_turn:
-    # Задержка перед ходом бота
-    pygame.time.wait(1000)  # 1000 миллисекунд = 1 секунда
-    bot_move()
-    if check_winner():
-        draw_board()
-        show_message("Бот выиграл!", font_size=48)
-        bot_score += 1  # Увеличиваем счёт бота
-    elif ' ' not in board:
-        draw_board()
-        show_message("Ничья!", font_size=48)
-    player_turn = True  # Меняем на ход игрока
-
-# Запрос на продолжение или выход в главное меню
+        # Здесь можно было бы убрать этот блок, так как игра идет далее
+        # для этого мы просто оставляем loop для переигровки
         while True:
             screen.fill(background_color)
-            replay_prompt1 = font.render("Продолжить играть? (1) Да / (2) В главное меню", True, WHITE)
-            screen.blit(replay_prompt1,
-                        (WIDTH // 2 - replay_prompt1.get_width() // 2, HEIGHT // 2 - replay_prompt1.get_height() // 2))
+            replay_prompt = font.render("Играть снова? (Нажмите 1) / Вернуться в меню (Нажмите ESC)", True, WHITE)
+            screen.blit(replay_prompt, (WIDTH // 2 - replay_prompt.get_width() // 2, HEIGHT // 2 - replay_prompt.get_height() // 2))
             pygame.display.flip()
 
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
                     pygame.quit()
                     return
-
+                
                 if event.type == pygame.KEYDOWN:
                     if event.key == pygame.K_1:
-                        board = [' '] * 9  # Сбрасываем игровое поле
-                        player_turn = True  # Игрок начинает первым
-                        break
-                    elif event.key == pygame.K_2:
-                        return  # Возвращаемся в главное меню
+                        board = [' '] * 9  
+                        player_turn = True  
+                        break  
+                    elif event.key == pygame.K_ESCAPE:
+                        return  
 
 class PlayerObstacle(pygame.sprite.Sprite):
     def __init__(self):
@@ -202,7 +209,7 @@ def run_obstacle_game():
             show_message("Вы проиграли в игре с препятствиями!")
             running = False
 
-        score += 1 / 60
+        score += 1 / 60  
         screen.fill(BLACK)
         player_group.draw(screen)
         obstacles_group.draw(screen)
@@ -214,19 +221,17 @@ def run_obstacle_game():
         pygame.display.flip()
         clock.tick(60)
 
-
-
 running = True
 show_message("Нажмите любую клавишу, чтобы начать игру!")
 
-player_score = 0
-bot_score = 0
+player_score = 0 
+bot_score = 0     
 
 while running:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             running = False
-        if event.type == pygame.KEYDOWN:
+        if event.type == pygame.KEYDOWN:  
             mode_font = pygame.font.Font(None, 48)
             screen.fill(background_color)
             text = mode_font.render("Выберите режим: (1) Крестики-нолики, (2) Препятствия", True, WHITE)
@@ -241,10 +246,10 @@ while running:
                         waiting = False
                     if event.type == pygame.KEYDOWN:
                         if event.key == pygame.K_1:
-                            tic_tac_toe(player_score, bot_score)
+                            tic_tac_toe(player_score, bot_score)  
                             waiting = False
                         elif event.key == pygame.K_2:
-                            run_obstacle_game()
+                            run_obstacle_game() 
                             waiting = False
 
 pygame.quit()
