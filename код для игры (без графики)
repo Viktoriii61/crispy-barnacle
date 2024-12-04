@@ -5,7 +5,7 @@ import random
 pygame.init()
 
 # Настройки окна
-WIDTH, HEIGHT = 900, 600
+WIDTH, HEIGHT = 1024, 768
 screen = pygame.display.set_mode((WIDTH, HEIGHT))
 pygame.display.set_caption("Игра: Крестики-нолики и преодоление препятствий")
 
