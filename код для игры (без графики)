@@ -58,5 +58,31 @@ def tic_tac_toe(player_score=0, bot_score=0):
                         j * CELL_SIZE + (WIDTH - 3 * CELL_SIZE) // 2 + CELL_SIZE // 2 - text.get_width() // 2,
                         i * CELL_SIZE + (HEIGHT - 3 * CELL_SIZE) // 2 + CELL_SIZE // 2 - text.get_height() // 2))
 
+# Игровая логика для крестиков-ноликов
+def tic_tac_toe(player_score=0, bot_score=0):
+    board = [' '] * 9  # Сеточное поле 3x3
+    player_turn = True  # Это ход игрока (X)
+    while True:
+        def draw_board():
+            screen.fill(background_color)
+            for i in range(3):
+                for j in range(3):
+                    # Рисуем сеточную линию
+                    pygame.draw.rect(screen, WHITE, (j * CELL_SIZE + (WIDTH - 3 * CELL_SIZE) // 2,
+                                                     i * CELL_SIZE + (HEIGHT - 3 * CELL_SIZE) // 2,
+                                                     CELL_SIZE, CELL_SIZE), 2)
+                    # Отображаем символы (X и O)
+                    if board[i * 3 + j] == 'X':
+                        text = font.render('X', True, GREEN)
+                        screen.blit(text, (
+                        j * CELL_SIZE + (WIDTH - 3 * CELL_SIZE) // 2 + CELL_SIZE // 2 - text.get_width() // 2,
+                        i * CELL_SIZE + (HEIGHT - 3 * CELL_SIZE) // 2 + CELL_SIZE // 2 - text.get_height() // 2))
+                    elif board[i * 3 + j] == 'O':
+                        text = font.render('O', True, RED)
+                        screen.blit(text, (
+                        j * CELL_SIZE + (WIDTH - 3 * CELL_SIZE) // 2 + CELL_SIZE // 2 - text.get_width() // 2,
+                        i * CELL_SIZE + (HEIGHT - 3 * CELL_SIZE) // 2 + CELL_SIZE // 2 - text.get_height() // 2))
+
+
 
 pygame.quit()
