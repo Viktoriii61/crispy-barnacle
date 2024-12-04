@@ -125,4 +125,10 @@ if not player_turn:
         show_message("Ничья!", font_size=48)
     player_turn = True  # Меняем на ход игрока
 
+running = True
+show_message("Нажмите любую клавишу, чтобы начать игру!")
+
+player_score = 0
+bot_score = 0
+
 pygame.quit()
