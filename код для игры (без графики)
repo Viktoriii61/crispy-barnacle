@@ -112,9 +112,17 @@ while running:
                     show_message("Ничья!", font_size=48)
                 player_turn = False  # Меняем на ход бота
 
-
-
-
-
+if not player_turn:
+    # Задержка перед ходом бота
+    pygame.time.wait(1000)  # 1000 миллисекунд = 1 секунда
+    bot_move()
+    if check_winner():
+        draw_board()
+        show_message("Бот выиграл!", font_size=48)
+        bot_score += 1  # Увеличиваем счёт бота
+    elif ' ' not in board:
+        draw_board()
+        show_message("Ничья!", font_size=48)
+    player_turn = True  # Меняем на ход игрока
 
 pygame.quit()
