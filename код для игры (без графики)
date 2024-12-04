@@ -72,6 +72,13 @@ def check_winner():
         return True
     return False
 
+def bot_move():
+    empty_cells = [i for i in range(9) if board[i] == ' ']
+    if empty_cells:
+        index = random.choice(empty_cells)
+        board[index] = 'O'
+
+
 
 
 
