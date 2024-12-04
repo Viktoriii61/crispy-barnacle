@@ -57,6 +57,15 @@ def tic_tac_toe(player_score=0, bot_score=0):
                         screen.blit(text, (
                         j * CELL_SIZE + (WIDTH - 3 * CELL_SIZE) // 2 + CELL_SIZE // 2 - text.get_width() // 2,
                         i * CELL_SIZE + (HEIGHT - 3 * CELL_SIZE) // 2 + CELL_SIZE // 2 - text.get_height() // 2))
+             # Отображение текущего счёта
+            score_text = font.render(f"Счёт - Вы: {player_score} | Бот: {bot_score}", True, WHITE)
+            screen.blit(score_text, (10, 10))
+
+            # Надпись для выхода в меню
+            menu_text = font.render("Нажмите ESC для выхода в меню", True, WHITE)
+            screen.blit(menu_text, (WIDTH // 2 - menu_text.get_width() // 2, HEIGHT - 50))
+
+            pygame.display.flip()
 def check_winner():
     for i in range(3):
         # Проверка строк
