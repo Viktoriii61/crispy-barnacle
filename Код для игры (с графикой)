@@ -102,3 +102,18 @@ def tic_tac_toe(player_score=0, bot_score=0):
                         player_turn = True
                     else:
                         player_turn = False
+if not player_turn:
+            empty_cells = [i for i, x in enumerate(board) if x == ' ']
+            if empty_cells:
+                index = random.choice(empty_cells)
+                board[index] = 'O'
+                if check_winner(board):
+                    draw_board(board, player_score, bot_score)
+                    show_message("Бот выиграл!", font_size=48)
+                    bot_score += 1
+                    board = [' '] * 9
+                elif ' ' not in board:
+                    draw_board(board, player_score, bot_score)
+                    show_message("Ничья!", font_size=48)
+                    board = [' '] * 9
+                player_turn = True
