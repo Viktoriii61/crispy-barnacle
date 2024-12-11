@@ -47,3 +47,9 @@ def check_winner(board):
         if board[i] == board[i + 3] == board[i + 6] != ' ':
             return True
 
+if board[0] == board[4] == board[8] != ' ':
+        return True
+    if board[2] == board[4] == board[6] != ' ':
+        return True
+    return False
+
