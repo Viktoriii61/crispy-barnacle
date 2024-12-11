@@ -180,3 +180,8 @@ def run_obstacle_game():
 
         pygame.display.flip()
         clock.tick(60)
+running = True
+show_message("Нажмите любую клавишу, чтобы начать игру!")
+player_score = 0
+bot_score = 0
+
