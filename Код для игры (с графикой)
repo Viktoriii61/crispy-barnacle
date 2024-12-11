@@ -192,4 +192,9 @@ while running:
             mode_font = pygame.font.Font(None, 48)
             screen.blit(background_image_menu, (0, 0))  # Использование фонового изображения для меню
 
+            text = mode_font.render("Выберите режим: (1) Крестики-нолики, (2) Препятствия", True, WHITE)
+            text_rect = text.get_rect(center=(WIDTH // 2, HEIGHT // 2))
+            screen.blit(text, text_rect)
+            pygame.display.flip()
+
 
