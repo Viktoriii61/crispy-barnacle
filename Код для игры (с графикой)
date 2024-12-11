@@ -28,4 +28,7 @@ background_image_tic_tac_toe = pygame.transform.scale(background_image_tic_tac_t
 background_image_obstacles = pygame.image.load('background_obstacles.png')
 background_image_obstacles = pygame.transform.scale(background_image_obstacles, (WIDTH, HEIGHT))
 
+background_image_menu = pygame.image.load('background_menu.png') # Предположим, что вы добавите фоновое изображение для меню
+background_image_menu = pygame.transform.scale(background_image_menu, (WIDTH, HEIGHT))
+
 
