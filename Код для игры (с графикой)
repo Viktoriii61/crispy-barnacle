@@ -144,3 +144,39 @@ class Obstacle(pygame.sprite.Sprite):
         if self.rect.right < 0:
             self.rect.x = WIDTH
             self.rect.y = random.randint(0, HEIGHT - 40)
+
+def run_obstacle_game():
+    player = PlayerObstacle()
+    player_group = pygame.sprite.Group()
+    player_group.add(player)
+
+    obstacles_group = pygame.sprite.Group()
+    for _ in range(6):
+        obstacle = Obstacle()
+        obstacles_group.add(obstacle)
+
+    running = True
+    clock = pygame.time.Clock()
+    score = 0
+    while running:
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                running = False
+
+        player_group.update()
+        obstacles_group.update()
+
+        if pygame.sprite.spritecollideany(player, obstacles_group):
+            show_message("Вы проиграли в игре с препятствиями!")
+            running = False
+
+        score += 1 / 60
+        screen.blit(background_image_obstacles, (0, 0))
+        player_group.draw(screen)
+        obstacles_group.draw(screen)
+
+        score_text = font.render(f"Счёт: {int(score)}", True, WHITE)
+        screen.blit(score_text, (10, 10))
+
+        pygame.display.flip()
+        clock.tick(60)
