@@ -22,3 +22,6 @@ player_image = pygame.transform.scale(player_image, (30, 30))
 obstacle_image = pygame.image.load('obstacle.png')
 obstacle_image = pygame.transform.scale(obstacle_image, (40, 40))
 
+background_image_tic_tac_toe = pygame.image.load('background_tic_tac_toe.png')
+background_image_tic_tac_toe = pygame.transform.scale(background_image_tic_tac_toe, (WIDTH, HEIGHT))
+
