@@ -19,9 +19,6 @@ font = pygame.font.Font(None, 72)
 player_image = pygame.image.load('player.png')
 player_image = pygame.transform.scale(player_image, (30, 30))
 
-player_image = pygame.image.load('player.png')
-player_image = pygame.transform.scale(player_image, (30, 30))
-
 obstacle_image = pygame.image.load('obstacle.png')
 obstacle_image = pygame.transform.scale(obstacle_image, (40, 40))
 
