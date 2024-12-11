@@ -184,4 +184,12 @@ running = True
 show_message("Нажмите любую клавишу, чтобы начать игру!")
 player_score = 0
 bot_score = 0
+while running:
+    for event in pygame.event.get():
+        if event.type == pygame.QUIT:
+            running = False
+        if event.type == pygame.KEYDOWN:
+            mode_font = pygame.font.Font(None, 48)
+            screen.blit(background_image_menu, (0, 0))  # Использование фонового изображения для меню
+
 
