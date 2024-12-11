@@ -197,4 +197,20 @@ while running:
             screen.blit(text, text_rect)
             pygame.display.flip()
 
+            waiting = True
+            while waiting:
+                for event in pygame.event.get():
+                    if event.type == pygame.QUIT:
+                        waiting = False
+                        running = False
+                    if event.type == pygame.KEYDOWN:
+                        if event.key == pygame.K_1:
+                            tic_tac_toe(player_score, bot_score)
+                            waiting = False
+                        elif event.key == pygame.K_2:
+                            run_obstacle_game()
+                            waiting = False
+
+pygame.quit()
+
 
