@@ -131,3 +131,16 @@ class PlayerObstacle(pygame.sprite.Sprite):
             self.rect.y -= 5
         if keys[pygame.K_DOWN] and self.rect.bottom < HEIGHT:
             self.rect.y += 5
+class Obstacle(pygame.sprite.Sprite):
+    def __init__(self):
+        super().__init__()
+        self.image = obstacle_image
+        self.rect = self.image.get_rect()
+        self.rect.x = WIDTH
+        self.rect.y = random.randint(0, HEIGHT - 40)
+
+    def update(self):
+        self.rect.x -= 5
+        if self.rect.right < 0:
+            self.rect.x = WIDTH
+            self.rect.y = random.randint(0, HEIGHT - 40)
