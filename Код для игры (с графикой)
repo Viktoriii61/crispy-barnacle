@@ -39,3 +39,11 @@ def show_message(message, font_size=36, duration=None):
     pygame.display.flip()
     if duration:
         pygame.time.wait(duration)
+
+def check_winner(board):
+    for i in range(3):
+        if board[i * 3] == board[i * 3 + 1] == board[i * 3 + 2] != ' ':
+            return True
+        if board[i] == board[i + 3] == board[i + 6] != ' ':
+            return True
+
