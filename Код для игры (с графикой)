@@ -13,3 +13,6 @@ PURPLE = (160, 32, 240)  # Фиолетовый цвет для крестико
 BLUE = (0, 0, 255)       # Синий для ноликов
 LIGHT_BLUE = (173, 216, 230) 
 
+CELL_SIZE = 200
+font = pygame.font.Font(None, 72)
+
