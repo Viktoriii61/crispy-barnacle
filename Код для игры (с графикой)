@@ -28,7 +28,14 @@ background_image_tic_tac_toe = pygame.transform.scale(background_image_tic_tac_t
 background_image_obstacles = pygame.image.load('background_obstacles.png')
 background_image_obstacles = pygame.transform.scale(background_image_obstacles, (WIDTH, HEIGHT))
 
-background_image_menu = pygame.image.load('background_menu.png') # Предположим, что вы добавите фоновое изображение для меню
+background_image_menu = pygame.image.load('background_menu.png')
 background_image_menu = pygame.transform.scale(background_image_menu, (WIDTH, HEIGHT))
 
-
+def show_message(message, font_size=36, duration=None):
+    text_font = pygame.font.Font(None, font_size)
+    text = text_font.render(message, True, WHITE)
+    text_rect = text.get_rect(center=(WIDTH // 2, HEIGHT // 2))
+    screen.blit(text, text_rect)
+    pygame.display.flip()
+    if duration:
+        pygame.time.wait(duration)
