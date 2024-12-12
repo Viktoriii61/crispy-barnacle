@@ -9,8 +9,8 @@ pygame.display.set_caption("Игра: Крестики-нолики и прео�
 
 WHITE = (255, 255, 255)
 BLACK = (0, 0, 0)
-PURPLE = (160, 32, 240)  # Фиолетовый цвет для крестиков
-BLUE = (0, 0, 255)       # Синий для ноликов
+PURPLE = (160, 32, 240)  
+BLUE = (0, 0, 255)      
 LIGHT_BLUE = (173, 216, 230) 
 
 CELL_SIZE = 200
@@ -28,7 +28,7 @@ background_image_tic_tac_toe = pygame.transform.scale(background_image_tic_tac_t
 background_image_obstacles = pygame.image.load('background_obstacles.png')
 background_image_obstacles = pygame.transform.scale(background_image_obstacles, (WIDTH, HEIGHT))
 
-background_image_menu = pygame.image.load('background_menu.png') # Предположим, что вы добавите фоновое изображение для меню
+background_image_menu = pygame.image.load('background_menu.png') 
 background_image_menu = pygame.transform.scale(background_image_menu, (WIDTH, HEIGHT))
 
 def show_message(message, font_size=36, duration=None):
@@ -194,7 +194,7 @@ while running:
             running = False
         if event.type == pygame.KEYDOWN:
             mode_font = pygame.font.Font(None, 48)
-            screen.blit(background_image_menu, (0, 0))  # Использование фонового изображения для меню
+            screen.blit(background_image_menu, (0, 0))  
             text = mode_font.render("Выберите режим: (1) Крестики-нолики, (2) Препятствия", True, WHITE)
             text_rect = text.get_rect(center=(WIDTH // 2, HEIGHT // 2))
             screen.blit(text, text_rect)
